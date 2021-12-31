@@ -6,7 +6,7 @@ The challenge I chose is to deploy a scalable SQL database cluster reling on Kub
 
 Video demonstring everything working:
 
-![Video demonstration](https://raw.githubusercontent.com/milanogc/do-kubernetes-challenge-sql-cluster/main/Screencast%202021-12-31%2010%3A44%3A22.mp4)
+https://youtu.be/mQWo_Jih2jA
 
 ## Create Kubernetes cluster on Digital Ocean
 
