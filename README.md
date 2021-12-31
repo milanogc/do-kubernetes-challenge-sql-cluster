@@ -4,6 +4,10 @@ This repository contains the artifacts of accomplishment of [Digital Ocean Kuber
 
 The challenge I chose is to deploy a scalable SQL database cluster reling on Kubegres operator for PostgreSQL.
 
+Video demonstring everything working:
+
+![Video demonstration](Screencast 2021-12-31 10:44:22.mp4)
+
 ## Create Kubernetes cluster on Digital Ocean
 
 1. [Create a Kubernetes cluster on Digital Ocean](https://cloud.digitalocean.com/kubernetes/clusters/new), default values are ok, keep the node count as 3 at least.
