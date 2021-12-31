@@ -83,9 +83,15 @@ spec:
           key: replicationUserPassword
 ```
 
-Only thing that is different from [Kubegres' Getting Started document](https://www.kubegres.io/doc/getting-started.html) is the field `spec.database.size` that changed from `200Mi` to `1Gi`, this is due to Digital Ocean's minimal volume size being `1Gi`.
+> Only thing that is different from [Kubegres' Getting Started document](https://www.kubegres.io/doc/getting-started.html) is the field `spec.database.size` that changed from `200Mi` to `1Gi`, this is due to Digital Ocean's minimal volume size being `1Gi`.
+> Without this change the following error happens when you look at the events:
+```
+$ kubect get events -w
+...
 
-Without this change the following error happens: `TODO`.
+0s          Warning   ProvisioningFailed             persistentvolumeclaim/postgres-db-mypostgres-1-0   failed to provision volume with StorageClass "do-block-storage": rpc error: code = OutOfRange desc = invalid capacity range: required (200Mi) can not be less than minimum supported volume size (1Gi)
+```
+
 
 1. Apply the Kubegres resource to the cluster:
 
