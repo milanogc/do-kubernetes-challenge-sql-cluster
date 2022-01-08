@@ -1,17 +1,31 @@
-# Digital Ocean Kubernetes Challenge
+# DigitalOcean Kubernetes Challenge
 
-This repository contains the artifacts of accomplishment of [Digital Ocean Kubernetes Challenge](https://www.digitalocean.com/community/pages/kubernetes-challenge).
+This repository contains the artifacts of accomplishment of [DigitalOcean Kubernetes Challenge](https://www.digitalocean.com/community/pages/kubernetes-challenge).
 
 The challenge I chose is to deploy a scalable SQL database cluster reling on Kubegres operator for PostgreSQL.
 
-Video demonstring everything working:
+Video demonstring everything working: https://youtu.be/mQWo_Jih2jA.
 
-https://youtu.be/mQWo_Jih2jA
+## Create Kubernetes cluster on DigitalOcean
 
-## Create Kubernetes cluster on Digital Ocean
+1. Creation of a Kubernetes cluster using DigitalOcean's UI is very simple:
+- Open DigitalOcean's Kubernetes section and next click on the button "Create a Kubernetes Cluster" or follow to this link: https://cloud.digitalocean.com/kubernetes/clusters/new
+- Default values for our cluster are already fine for this demo:
+  - Select a Kubernetes version: I kept the recommended one at the time, `1.21.5-do.0`
+  - Choose any data center region: I kept the default selected
+  - Keep the node count as `3`
+  - Give a name to the cluster: `kubernetes-challenge`
+  - Finally click on "Create Cluster" button
 
-1. [Create a Kubernetes cluster on Digital Ocean](https://cloud.digitalocean.com/kubernetes/clusters/new), default values are ok, keep the node count as 3 at least.
-2. After the cluster creation, download its config file (`.yaml`) from Digital Ocean. I placed it on `$HOME/Downloads/kubernetes-challenge-kubeconfig.yaml`.
+Next is the cluster creation screen with data filled as defined above:
+
+![DigitalOcean's screen](do-screen-1.png "DigitalOcean's Kubernetes cluster creation screen 1")
+
+2. After clicking on the "Create Cluster" button, it will present a screen with a progress bar at the top, as shown below. Now, we just need to wait for the cluster creation process to end. Note the message: `provisioning is usually complete within 4 minutes. You can configure the cluster while you wait`.
+
+![DigitalOcean's screen](do-screen-2.png "DigitalOcean's Kubernetes cluster creation screen 2")
+
+3. As our cluster is created, download its config file (`.yaml`), for this, click on the button "Download Config File". I placed it on `$HOME/Downloads/kubernetes-challenge-kubeconfig.yaml`.
 
 ## Install and configure `kubectl` command
 
@@ -97,7 +111,7 @@ Now we should already have our scalable PostgreSQL cluster working.
 
 ---
 
-> Note: Only thing that is different from [Kubegres' Getting Started document](https://www.kubegres.io/doc/getting-started.html) is the field `spec.database.size` that changed from `200Mi` to `1Gi`, this is due to Digital Ocean's minimal volume size being `1Gi`.
+> Note: Only thing that is different from [Kubegres' Getting Started document](https://www.kubegres.io/doc/getting-started.html) is the field `spec.database.size` that changed from `200Mi` to `1Gi`, this is due to DigitalOcean's minimal volume size being `1Gi`.
 > Without this change the following error happens when you look at the events:
 ```
 $ kubect get events -w
